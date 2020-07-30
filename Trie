@@ -1,0 +1,27 @@
+class Trie{
+    char val;
+    Trie block[];
+    Trie(char val){
+        this.val=val;
+        block=new Trie[256];
+        Arrays.fill(block,null);
+    }    
+}
+
+class Solution {
+    public void buildTrie(String word,int index,Trie temp){
+        
+        if(index==word.length()){
+            temp.block[0]=new Trie('\0');
+            return ;
+        }
+        visit[word.charAt(index)]=true;
+        if(temp.block[word.charAt(index)]==null) {
+            
+           temp.block[word.charAt(index)]=new Trie(word.charAt(index)); 
+        }
+        
+        buildTrie(word,index+1,temp.block[word.charAt(index)]);
+        
+    }
+}
